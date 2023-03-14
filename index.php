@@ -12,15 +12,36 @@
 
     <div class="section-inner">
 
+
+    <?php
+
+    $args = array(
+        'post_per_page' => 1,
+    );
+
+    $feature_post = new WP_Query( $args );
+
+    if ($feature_post->have_posts()) {
+        while( $feature_post->have_posts() ) {
+            $feature_post->the_post();
+            // Post ID.
+            $feature_id = $post->ID;
+
+    ?>
+
         <article class="blog-entry content-block">
             <header class="blog-entry__header">
                 <div class="blog-entry__header__category">
-                    <a href="">Featured</a>
+                    <?php the_category(); ?>
                 </div>
-                <h1 class="blog-entry__header__title">Worth A Thousand Words</h1>
-                <time datetime="">April 9, 2020</time>
+                <h1 class="blog-entry__header__title"><?php the_title(); ?></h1>
+                <time datetime=""><?php the_time( 'F j, Y' ); ?></time>
             </header>
+        </article>
 
+    <?php }  //while.
+} //if.
+?>
 
         <ul class="post-list">
             <li>
