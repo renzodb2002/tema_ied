@@ -12,88 +12,36 @@
 
     <div class="section-inner">
 
-
-    <?php
-
-    $args = array(
-        'post_per_page' => 1,
-    );
-
-    $feature_post = new WP_Query( $args );
-
-    if ($feature_post->have_posts()) {
-        while( $feature_post->have_posts() ) {
-            $feature_post->the_post();
-            // Post ID.
-            $feature_id = $post->ID;
-
-    ?>
-
-        <article class="blog-entry content-block">
-            <header class="blog-entry__header">
-                <div class="blog-entry__header__category">
-                    <?php the_category(); ?>
-                </div>
-                <h1 class="blog-entry__header__title"><?php the_title(); ?></h1>
-                <time datetime=""><?php the_time( 'F j, Y' ); ?></time>
-            </header>
-        </article>
-
-    <?php }  //while.
-} //if.
-?>
+        <?php
+        if( is_front_page()) {
+            //https://localhost:8888/{nomesito}/{tema}/featured-post.php
+            include( TEMPLATEPATH . '/featured-posts.php' );
+        }
+        ?>
 
         <ul class="post-list">
-            <li>
-                <div class="post-thumb">
-                    <img src="<?php echo bloginfo( 'template_directory' ); ?>/assets/images/widget-1.jpg">
-                </div>
 
-                <div class="post-entry">
-                    <a href="#">Ask HN: Does Anybody Still Use JQuery?</a>
-                    <time datetime="">March 27, 2018</time>
-                    <p></p>
-                </div>
-            </li>
+            <?php
+            //Start loop.
+            while ( have_posts() ) :
+                the_post();
+                if ( $post->ID !== $featured_id ) : ?>
+                    <li>
+                         <div class="post-thumb">
+                            <?php the_post_thumbnail( 'thumbnail' ); ?>
+                        </div>
 
-            <li>
-                <div class="post-thumb">
-                    <img src="<?php echo bloginfo( 'template_directory' ); ?>/assets/images/widget-2.jpg">
-                </div>
+                        <div class="post-entry">
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        <?php
 
-                <div class="post-entry">
-                    <a href="#">Tell-A-Tool: Guide To Web Design And Development Tools</a>
-                    <time datetime="">January 27, 2020</time>
-                    <p></p>
-                </div>
-            </li>
-
-            <li>
-                <div class="post-thumb">
-                    <img src="<?php echo bloginfo( 'template_directory' ); ?>/assets/images/widget-3.jpg">
-                </div>
-
-                <div class="post-entry">
-                    <a href="#">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a>
-                    <time datetime="">January 27, 2020</time>
-                    <p></p>
-                </div>
-            </li>
-
-            <li>
-                <div class="post-thumb">
-                    <img src="<?php echo bloginfo( 'template_directory' ); ?>/assets/images/widget-4.jpg">
-                </div>
-
-                <div class="post-entry">
-                    <a href="#">Pagedraw UI Builder Turns Your Website Design Mockup Into Code Automatically</a>
-                    <time datetime="">January 27, 2020</time>
-                    <p></p>
-                </div>
-
-            </li>
-
-        </ul>
+                        the_time( 'F, j, Y', '<time>', '</time>' );
+                        ?>
+                  </div>
+                </li>
+                    <?php endif; endwhile; ?>
+        </ul>       
+            
 
         <div class="pagination">
             <a class="prev page-numbers" href="#">&laquo;</a>
