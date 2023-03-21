@@ -28,7 +28,9 @@
                 if ( $post->ID !== $featured_id ) : ?>
                     <li>
                          <div class="post-thumb">
-                            <?php the_post_thumbnail( 'thumbnail' ); ?>
+                            <?php
+                            // size: thumbnail - medium - large - medium-large - full
+                            the_post_thumbnail( 'thumbnail' ); ?>
                         </div>
 
                         <div class="post-entry">
