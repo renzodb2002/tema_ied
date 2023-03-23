@@ -1,9 +1,6 @@
 <?php
 /**
- * 
- * index.
- * 
- * @since 1.0
+ * Featured-Post
  */
 
 $args = array(

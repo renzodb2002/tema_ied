@@ -1,9 +1,6 @@
 <?php
 /**
- * 
- * funtions
- * 
- * @since 1.0
+ * Functions.
  */
 
 require_once dirname(__FILE__) . '/inc/template-tags.php';

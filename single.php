@@ -1,9 +1,6 @@
 <?php
 /**
- * 
  * Single Theme.
- * 
- * @since 1.0
  */
 ?>
 
@@ -30,28 +27,23 @@
             
             <?php
             tema_ied_post_thumbnail( 'large' );
-
+            //Contenuto
             the_content(); ?>
+
+    <?php if ( has_tag() ) : ?>
+        <div class="tags-widget">
+            
+            <?php 
+            // TAG
+            the_tags( '<ul><li>', '</li><li>', '</ul>' ); 
+            ?>
+
+        </div>
+        <?php endif; ?>
 
         <!-- /blog-entry -->
         </article> 
-        <!--
-        <div class="tags-widget">
-            <ul>
-                <li>
-                    <a href="#">Web Design</a>
-                </li>
 
-                <li>
-                    <a href="#" rel="tag">VFX</a>
-                </li>
-
-                <li>
-                    <a href="#">Sound</a>
-                </li>
-            </ul>
-        </div>
-        -->
     <?php endwhile; ?>
 
     </div>

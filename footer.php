@@ -1,8 +1,6 @@
 <?php 
 /**
- * footer
- * 
- * @since 1.0
+ * Footer.
  */
 ?>
 

@@ -1,8 +1,6 @@
 <?php 
 /**
- * header
- * 
- * @since 1.0
+ * Header.
  */
 ?>
 <!DOCTYPE html>

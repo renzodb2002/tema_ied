@@ -1,9 +1,6 @@
 <?php
 /**
- * 
- * index.
- * 
- * @since 1.0
+ * Index.
  */
 ?>
 
@@ -45,17 +42,15 @@
         </ul>       
             
 
-        <div class="pagination">
-            <a class="prev page-numbers" href="#">&laquo;</a>
-            <a class="page-numbers" href="#">1</a>
-            <a class="page-numbers" href="#">2</a>
-            <span aria-current="page" class="page-numbers current">3</span>
-            <a class="next page-numbers" href="http://localhost:8888/wordpress/page/3/">»</a>
-        </div>
+        <?php the_posts_pagination( array (
+            'prev_text' => '<span class="older-posts">Meno recenti</span>',
+            'next_text' => '<span class="newer-posts">Più recenti</span>',
+             ),
+        );
+        ?>
 
     </div>
 
 </main>
-<?php get_footer(); 
 
-?>
+<?php get_footer(); ?>
